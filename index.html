@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla de Inicio</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Fondo de partículas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #0d0d0d; /* Fondo negro */
+      z-index: 0;           /* detrás del contenido */
+      pointer-events: auto; /* recibe el hover del mouse */
+    }
+
+    /* Contenido encima */
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      pointer-events: none; /* deja pasar el hover al canvas */
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 5em;
+      text-shadow: 0 0 0px #ffffff, 0 0 40px #ffffff, 0 0 60px #ffffff;
+      margin-bottom: 30px;
+      pointer-events: auto; /* sigue siendo visible, no bloquea */
+    }
+
+    .btn {
+      padding: 20px 40px;
+      font-size: 1.2em;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1); /* Transparencia tipo vidrio */
+      border: 0px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      cursor: pointer;
+      backdrop-filter: blur(10px); /* Efecto vidrio */
+      -webkit-backdrop-filter: blur(10px); /* Compatibilidad Safari */
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      transition: 0.3s;
+      pointer-events: auto; /* ✨ botón sí es clickeable */
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo de partículas -->
+  <div id="particles-js"></div>
+
+  <!-- Contenido encima -->
+  <div class="content">
+    <h1>Enredados</h1>
+    <button class="btn" onclick="location.href='mapa.html'">Entrar</button>
+  </div>
+
+  <!-- Librería Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 400, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.6 },
+        "size": { "value": 2 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.5,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 4,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "repulse": { "distance": 50, "duration": 0.1 },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>

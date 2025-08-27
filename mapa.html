@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="es">  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa Interactivo Gamificado</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <nav class="menu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="mapa.html">Mapa</a></li>
+    <li><a href="about.html">About Us</a></li>
+  </ul>
+</nav>
+
+  <div id="scene">
+    <div class="hub hub1" data-title="Phishing"></div>
+    <div class="hub hub2" data-title="Smishing"></div>
+    <div class="hub hub3" data-title="Vishing"></div>
+    <div class="hub hub4" data-title="Clonación de páginas web"></div>
+    <div class="hub hub5" data-title="Datos Impactantes"></div>
+    <div class="hub hub6" data-title="Datos Curiosos"></div>
+    
+
+  </div>
+
+  <div class="info-card card-base">
+    <h2>Explora el Mapa</h2>
+    <p id="default-info">
+      Aquí puedes interactuar con la red de nodos.<br><br>
+      ⚪ Haz clic en cada nodo blanco para descubrir información.<br>
+      🖱️ Usa la rueda del mouse para desplazarte y explorar más nodos.<br>
+      🖱️ Cuando estés dentro de un panel, toca el fondo para salir y continuar explorando. <br>
+      📡  Nuestro diseño muestra cómo todo está interconectado: cada nodo representa conexiones dentro de la red, reflejando cómo nosotros y el internet formamos una red viva y en constante movimiento.
+    </p>
+  </div>
+
+  <div class="overlay card-base" id="overlay"></div>
+  
+  <script>
+
+    // Aplica la animación al cargar
+    
+
+    // Antes de salir, hace el fade-out
+    document.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault(); // detiene el cambio inmediato
+        let href = link.getAttribute("href");
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+          window.location.href = href;
+        }, 800); // mismo tiempo que el transition
+      });
+    });
+
+
+    /* Fondo partículas */
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 400 },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.5, width: 1 },
+        move: { enable: true, speed: 4 }
+      },
+      interactivity: { events: { onhover: { enable: false } } },
+      retina_detect: true
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+
+    
+      document.body.classList.add("fade-in");
+    
+
+      const hubs = document.querySelectorAll('.hub');
+      const scene = document.getElementById('scene');
+      const overlay = document.getElementById('overlay');
+      const infoCard = document.querySelector('.info-card');
+      const menu = document.querySelector('.menu');
+
+
+      /* ====== Contenido de paneles por hub ====== */
+      const info = {
+
+        hub1: [
+
+        /*  Panel 1  */
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+            <h1>Phishing</h1>
+            <h2>¿Qué es?</h2>
+            <p>
+              El phishing es un método de fraude digital en el que delincuentes envían correos 
+              electrónicos falsos que parecen ser de bancos, la DIAN u otras entidades confiables.
+            </p>
+            <p>
+              El objetivo es engañar al usuario para que entregue datos sensibles como contraseñas,
+              números de tarjetas o información personal.
+            </p>
+
+
+            <h2>¿Cómo NO caer en Enredos?</h2>
+            <div class="panel-right">
+            <ul>
+              <li>Verifica siempre el remitente del correo antes de abrir enlaces.</li>
+              <li>No ingreses a enlaces sospechosos, escribe directamente la dirección oficial en el navegador.</li>
+              <li>Nunca compartas contraseñas, números de tarjeta o datos personales por correo.</li>
+              
+            </ul>
+          </div>
+
+
+
+          </div>
+        </div>`,
+
+
+         /*  Panel 2  */
+                
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+            <h2>¿Qué hacer en caso de ser víctima?</h2>
+            <ul>
+              <li>Reporta al correo de la DIAN, <a href="mailto:phishing-report@colcert.gov.co">phishing-report@colcert.gov.co</a></li>
+              <li>Denuncia en el CAI Virtual, <a href="https://caivirtual.policia.gov.co" target="_blank">caivirtual.policia.gov.co</a></li>
+              <li>Si hay amenazas, llamar al GAULA 165.</li>
+              <li>Reenvía al número 7726 (SPAM) para que lo bloquee tu operador.</li>
+            </ul>
+          </div>
+        </div>`,
+
+
+        
+
+        ],
+        hub2: [
+          /*  Panel 1  */
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+            <h1>Smishing</h1>
+            <h2>¿Qué es?</h2>
+            <p>
+             El smishing es una variante del phishing que se realiza a través de mensajes de texto (SMS).
+            Los delincuentes envían mensajes falsos que suelen pedir información privada o invitan a entrar 
+            a enlaces maliciosos.
+            </p>
+            <p>
+              El objetivo es engañar al usuario para que entregue datos sensibles como contraseñas,
+              números de tarjetas o información personal.
+            </p>
+
+            <h2>Riesgos principales</h2>
+            <ul>
+              <li>Robo de información personal</li>
+              <li>Fraude financiero.</li>
+              <li>Extorsión o chantaje  </li>
+            </ul>
+          </div>
+        </div>`,
+
+
+         /*  Panel 2  */
+                
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+         
+          <div class="panel-right">
+           <h2>¿Como NO caer en Enredos?</h2>
+          <ul>
+            <li>No responder mensajes de texto de remitentes desconocidos o sospechosos.</li>
+            <li>No ingresar contraseñas bancarias en sitios enviados por SMS o WhatsApp.</li>
+            <li>Nunca entregar número de identificación, tarjetas débito/crédito, códigos de seguridad ni contraseñas.</li>
+            <li>Si recibes un mensaje indicando que tu banco bloqueó productos y pide ingresar a un enlace, ignóralo.</li>
+            <li>Comunícate directamente con la línea oficial de atención al cliente de tu banco.</li>
+          </ul>
+        </div>
+
+
+        </div>`,
+
+
+          
+
+        ],
+        hub3: [
+          /*  Panel 1  */
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+            <h1>Vishing</h1>
+            <h2>¿Qué es?</h2>
+            <p>
+            El Vishing es una técnica de fraude en la que los delincuentes utilizan llamadas telefónicas para engañar a las personas y obtener información sensible, como datos bancarios o personales.
+            Un método común son las llamadas silenciosas, donde nadie responde al contestar; esto se hace para verificar si la línea está activa y pertenece a alguien. Incluso un simple “sí” puede ser grabado y usado como prueba de consentimiento.
+            </p>
+            
+            <h2>Riesgos principales</h2>
+            <ul>
+              <li>Robo de identidad e información personal.</li>
+              <li>Intentos de persuadir para hacer compras falsas o entregar datos sensibles.</li>
+              <li>Enlaces maliciosos enviados por llamada o mensaje.</li>
+            </ul>
+          </div>
+        </div>`,
+
+
+         /*  Panel 2  */
+                
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" controls>
+              <source src="videos/qrVideo.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+        
+            <h2>¿Como NO caer en Enredos?</h2>
+            <ul>
+              <li>No confíes en llamadas que dicen ser de bancos o entidades: recuerda que <strong>ninguna entidad pedirá tus datos por teléfono</strong>.</li>
+              <li>Nunca hagas clic en enlaces recibidos durante una llamada.</li>
+              <li>Verifica siempre la información en los <strong>canales oficiales</strong> de la empresa.</li>
+              <li>Instala un identificador de llamadas para mayor seguridad.</li>
+              <li>No devuelvas llamadas a números sospechosos o internacionales.</li>
+              <li>Bloquea los números reiterativos que insistan en contactarte.</li>
+            </ul>
+
+      
+          </div>
+        </div>`,
+
+
+
+        ],
+
+
+
+        hub4: [
+          /*  Panel 1  */
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+            <h1>Clonación de páginas web</h1>
+            <h2>¿Qué es?</h2>
+            <p>
+            La clonación de páginas web ocurre cuando un delincuente crea un sitio falso que imita a uno legítimo (usando logotipos, colores y tipografías similares).
+            El objetivo es robar datos personales, credenciales de acceso o información de pago.
+            Suele usarse junto con campañas de phishing.
+            </p>
+
+            
+            <h2>¿Como NO caer en Enredos?</h2>  
+            <ul>
+              <li>Revisa siempre que el link o URL coincida exactamente con la página oficial.</li>
+              <li>Evita ingresar desde enlaces de anuncios o mensajes de origen desconocido.</li>
+              <li>En compras online, verifica que el comercio sea reconocido y que la información coincida con el lugar.</li>
+              <li>No entregues información de pago en páginas redireccionadas o con descuentos poco creíbles.</li>
+              
+            </ul>
+          
+            
+          </div>
+        </div>`,
+
+
+
+
+        /*  Panel 2  */
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" controls>
+              <source src="videos/video1.mp4" type="video/mp4">>
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+
+            <h2>Tácticas más comunes</h2>
+            <ul>
+              <li><strong>Typosquatting:</strong> Cambian una letra o usan caracteres similares para que la URL se vea legítima (ejemplo: <em>banccolombia.com</em> en vez de <em>bancolombia.com</em>).</li>
+              <li><strong>Suplantación de dominio:</strong> Usan subdominios o incluso certificados válidos (candado verde) para parecer confiables.</li>
+              <li><strong>Clone phishing:</strong> Envían correos o mensajes casi idénticos a los reales, pero con enlaces alterados que llevan al sitio clonado.</li>
+              <li><strong>Skimming digital (e-commerce):</strong> Insertan código malicioso en páginas de pago para robar datos de tarjetas, incluso en sitios legítimos que fueron hackeados.</li>
+            </ul>
+            
+            
+          </div>
+        </div>`,
+
+
+
+
+        /*  Panel 3  */
+        `<div class="panel-layout">
+          <div class="panel-left">
+            <video width="100%" >
+              <source src="videos/video1.mp4" type="video/mp4">
+              Tu navegador no soporta el video.
+            </video>
+          </div>
+          <div class="panel-right">
+
+            <h2>¿Fuiste Victima?</h2>
+            <ul>
+              <li>Si fuiste víctima, bloquea tus tarjetas, cambia contraseñas y guarda evidencias (URLs, recibos, capturas).</li>
+              <li>Denuncia la suplantación de sitios web ante la Policía como delito informático.</li>
+              <li>Reporta el fraude a tu banco de inmediato si hubo uso de tarjetas o datos financieros.</li>
+            </ul>
+            
+            
+          </div>
+        </div>`,
+
+
+            
+
+
+        ],
+
+        hub5: [
+          /*  Panel 1  */
+        `<div class="panel-layout">
+         
+
+
+          <div class="panel-right">
+            <h1>Datos Impactantes</h1>
+           
+            <ul>
+
+
+              <li>
+                <h1>Más del 90%</h1>
+                <p>De los encuestados a recibido al menos un intento de estafa digital</p>
+              </li>
+
+
+              <li>
+                <h1>Más del 35%</h1>
+                <p>De los encuestados han sido victimas estafas digitales</p>
+              </li>
+
+
+              <li>
+                <h1>Fraudes Más comunes</h1>
+                <p>Mensajes de Texto,llamadas falsas y mensaje vía WhatsApp</p>
+              </li>
+
+              <li>
+                <h1>Más del 90%</h1>
+                <p>Piensa que no hay suficiente información ni educacion del</p>
+              </li>
+
+              
+            </ul>
+          
+            
+          </div>
+        </div>`,
+
+          ],
+
+
+
+          hub6: [
+          /*  Panel 1  */
+        `<div class="panel-layout">
+          
+         
+
+          <div class="panel-right">
+            <h1>Datos Curiosos</h1>
+            
+            <ul>
+
+              <li>
+                <h1>7726  </h1>
+                <p>¿Te llega un mensaje fraudulento? Reenvíalo al 7726. Así ayudas a tu operador a detectarlo y bloquearlo.</p>
+              </li>
+
+              <li>
+                <h1>Registro de Números Excluidos (RNE)</h1>
+                <p>nscribe gratis tu número en el RNE para dejar de recibir llamadas, mensajes de texto, correos o chats publicitarios no deseados.</p>
+              </li>
+
+              <li>
+                <h1>Ley de Habeas Data</h1>
+                <p>Cualquier persona puede pedir a una empresa que corrija, actualice o elimine sus datos personales de sus bases.</p>
+              </li>
+
+
+              <li>
+                <h1>Bloqueo gratuito</h1>
+                <p>Si te roban el teléfono, puedes reportar el IMEI a tu operador y quedará bloqueado en todas las redes del país</p>
+              </li>
+
+            </ul>
+            
+          </div>
+        </div>`,
+
+          ],
+      };
+
+      /* ====== Árboles de decisiones (puedes editar textos y ramificaciones) ====== */
+      const TREES = {
+        hub1: { // QR malos
+          question: "Recibes un correo de la DIAN diciendo que tienes sanciones y debes entrar a un enlace. ¿Qué haces?",
+            options: [
+              {
+                text: "Hago clic en el enlace y pongo mis datos para 'evitar problemas'.",
+                result: { ok: false, why: "¡Cuidado! Era phishing y entregaste tu información personal." }
+              },
+              {
+                text: "Reviso el remitente del correo y noto que no coincide con la DIAN.",
+                next: {
+                  question: "El correo se ve raro. ¿Qué decides hacer?",
+                  options: [
+                    {
+                      text: "Confío, porque el correo se parece al real.",
+                      result: { ok: false, why: "Era un correo falso con URL alterada. Te hicieron caer en phishing." }
+                    },
+                    {
+                      text: "No ingreso al enlace y reporto el caso al CAI Virtual.",
+                      result: { ok: true, why: "¡Bien hecho! Evitaste el fraude y ayudaste a detenerlo." }
+                    }
+                  ]
+                }
+              }
+            ]
+        },
+        hub2: { // Links erróneos
+          question: "Recibes un SMS de tu 'banco' diciendo que tu cuenta fue bloqueada y debes entrar a un link. ¿Qué haces?",
+            options: [
+              {
+                text: "Hago clic en el link y escribo mis datos bancarios.",
+                result: { ok: false, why: "¡Cuidado! Era smishing y ahora tienen acceso a tu cuenta." }
+              },
+              {
+                text: "Ignoro el mensaje porque sospecho que es fraude.",
+                next: {
+                  question: "¿Qué decides hacer después de ignorar el mensaje?",
+                  options: [
+                    {
+                      text: "No hago nada, lo dejo pasar.",
+                      result: { ok: false, why: "El número seguirá activo. Mejor reportarlo para evitar más víctimas." }
+                    },
+                    {
+                      text: "Reenvío el mensaje al 7726 (SPAM) y llamo al banco oficial.",
+                      result: { ok: true, why: "¡Excelente! Reportaste el fraude y protegiste tu dinero." }
+                    }
+                  ]
+                }
+              }
+            ]
+        },
+
+
+
+        hub3: { // llamadas
+          question: "Recibes una llamada de una 'empresa de mensajería' diciendo que tu paquete está retenido en aduana y debes dar datos personales. ¿Qué haces?",
+            options: [
+              {
+                text: "Doy mi número de cédula y tarjeta para 'liberar el paquete'.",
+                result: { ok: false, why: "¡Cuidado! Era vishing y usaron tus datos para fraude." }
+              },
+              {
+                text: "Cuelgo porque sospecho de la llamada.",
+                next: {
+                  question: "Después de colgar, ¿qué decides hacer?",
+                  options: [
+                    {
+                      text: "Ignoro la llamada y sigo con mi día.",
+                      result: { ok: false, why: "El fraude sigue activo, debiste reportar el número sospechoso." }
+                    },
+                    {
+                      text: "Llamo a la empresa de mensajería por sus canales oficiales.",
+                      result: { ok: true, why: "¡Muy bien! Confirmaste con la empresa real y evitaste la estafa." }
+                    }
+                  ]
+                }
+              }
+            ]
+        },
+
+
+
+        hub4: { // paginas web  
+          question: "Ves una página casi idéntica a una tienda online famosa con descuentos del 80%. ¿Qué haces?",
+            options: [
+              {
+                text: "Aprovecho la oferta y pongo mis datos de tarjeta.",
+                result: { ok: false, why: "¡Cuidado! Era una página clonada y robaron tus datos financieros." }
+              },
+              {
+                text: "Reviso la URL y noto que no coincide exactamente con la tienda oficial.",
+                next: {
+                  question: "El sitio parece sospechoso. ¿Qué decides hacer?",
+                  options: [
+                    {
+                      text: "Confío, porque el logo y diseño se ven iguales.",
+                      result: { ok: false, why: "Era un clon perfecto. Usaron typosquatting para engañarte." }
+                    },
+                    {
+                      text: "No compro y reporto el sitio como fraude.",
+                      result: { ok: true, why: "¡Excelente! Detectaste la página clonada y evitaste el fraude." }
+                    }
+                  ]
+                }
+              }
+            ]
+        },
+
+        hub5: { // Más cosas
+          question: "LOCA",
+          options: [
+            { text: "Lo conecto para revisar", result: { ok: false, why: "Riesgo de BadUSB. Podría ejecutar código malicioso." } },
+            {
+              text: "Lo entrego a TI",
+              next: {
+                question: "TI indica que puede estar comprometido. ¿Qué haces?",
+                options: [
+                  { text: "Lo uso igual", result: { ok: false, why: "Ignorar políticas de TI aumenta el riesgo." } },
+                  { text: "Lo descarto según protocolo", result: { ok: true, why: "Acción correcta según procedimiento." } }
+                ]
+              }
+            }
+          ]
+        }
+      };
+
+      let activeHub = null, activeKey = null, currentIndex = 0;
+
+      overlay.addEventListener('click', (e) => e.stopPropagation());
+
+      hubs.forEach(hub => {
+  hub.addEventListener('click', e => {
+    e.stopPropagation();
+
+    if (activeHub === hub) { 
+      resetView(); 
+      return; 
+    }
+
+    // Ocultar TODOS los hubs
+    hubs.forEach(h => {
+      h.classList.add('hidden');
+      h.classList.remove('active');
+    });
+
+    // Ocultar el panel fijo de la derecha
+    infoCard.classList.add("hidden");
+
+    activeHub = hub;
+    activeKey = [...hub.classList].find(c => /^hub\d+$/.test(c));
+    currentIndex = 0;
+
+    // Ocultar menú con fade
+    menu.classList.add('hidden');
+
+    // Zoom al nodo clicado
+    const rect = hub.getBoundingClientRect();
+    const nodeCenterX = rect.left + rect.width / 2;
+    const nodeCenterY = rect.top + rect.height / 2;
+    const offsetX = window.innerWidth / 2 - nodeCenterX;
+    const offsetY = window.innerHeight / 2 - nodeCenterY;
+    scene.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(2)`;
+
+    // Renderiza panel específico del nodo
+    renderPanel();
+
+    overlay.classList.add('active');
+    document.body.classList.add("modal-open");
+
+    infoCard.style.opacity = 0;
+  });
+});
+
+
+
+
+     function renderPanel() {
+  let controlsHTML = "";
+
+  const lastIndex = info[activeKey].length - 1;
+
+  if (currentIndex > 0) {
+    controlsHTML += `<button id="prevBtn">Anterior</button>`;
+  }
+
+  if (currentIndex < lastIndex ) {
+    controlsHTML += `<button id="nextBtn">Siguiente</button>`;
+  }
+
+  if (currentIndex === lastIndex && activeKey !== "hub5" && activeKey !== "hub6") {
+    controlsHTML += `<button id="startGameBtn">Poner a prueba</button>`;
+  }
+
+  
+
+  const totalBtns = (controlsHTML.match(/<\/button>/g) || []).length;
+  const controlsClass = totalBtns === 1 ? "controls single" : "controls";
+
+  overlay.innerHTML = `
+  <div class="panel ${activeKey === "hub6" ? "hub6-style" : ""}">
+    ${info[activeKey][currentIndex]}
+    <div class="${controlsClass}">
+      ${controlsHTML}
+    </div>
+  </div>
+`;
+
+
+  const panel = overlay.querySelector('.panel');
+  requestAnimationFrame(() => panel.classList.add('in'));
+
+  // Eventos de botones
+  const prevBtn = overlay.querySelector('#prevBtn');
+  const nextBtn = overlay.querySelector('#nextBtn');
+  const gameBtn = overlay.querySelector('#startGameBtn');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderPanel();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentIndex < lastIndex) {
+        currentIndex++;
+        renderPanel();
+      }
+    });
+  }
+
+  if (gameBtn) {
+    gameBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startDecisionGame(activeKey);
+    });
+  }
+
+  overlay.querySelectorAll('button,a').forEach(el => 
+    el.addEventListener('click', ev => ev.stopPropagation())
+  );
+
+  /* 👉 aquí la magia: reproducir video automáticamente si existe */
+  const video = overlay.querySelector(".panel-left video");
+  if (video) {
+    video.currentTime = 0;
+    video.play().catch(err => console.log("Autoplay bloqueado:", err));
+  }
+}
+
+
+    /* ====== Auto-reproducir video al abrir panel ====== */
+function playPanelVideo() {
+  const video = document.querySelector(".overlay.active .panel-left video");
+  if (video) {
+    video.currentTime = 0; // empieza desde 0
+    video.play().catch(err => console.log("Autoplay bloqueado:", err));
+  }
+}
+
+document.addEventListener("transitionend", (e) => {
+  if (e.target.classList.contains("overlay") && e.target.classList.contains("active")) {
+    playPanelVideo();
+  }
+});
+
+      /* ====== Juego tipo árbol ====== */
+      function startDecisionGame(topicKey) {
+        const tree = TREES[topicKey] || TREES.hub1;
+
+        overlay.innerHTML = `
+    <div class="panel in">
+      <h2>Decisión interactiva</h2>
+      <div class="game-wrap card-base">
+        <div class="game-canvas">
+          <svg class="tree-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+          <div class="nodes-layer"></div>
+        </div>
+      </div>
+    </div>
+  `;
+
+        const gameWrap = overlay.querySelector('.game-wrap');
+        const canvas   = overlay.querySelector('.game-canvas');
+        const svg      = overlay.querySelector('.tree-svg');
+        const nodesLay = overlay.querySelector('.nodes-layer');
+
+        let depth = 0;                 // nivel actual (fila)
+        const rowGap = 200;            // distancia vertical entre filas
+        const baseY = 120;              // margen superior
+        const nodesByDepth = [];       // guardamos nodos DOM por nivel para limpiar ramas
+        const centers = [50, 30, 70, 30, 70]; // posiciones X en % por fila
+
+        // Ajustar altura dinámica del lienzo
+        function ensureHeightFor(d) {
+          const needed = baseY + (d+2) * rowGap;
+          svg.style.height = needed + "px";
+          nodesLay.style.height = needed + "px";
+        }
+        function pctXToPx(percent) {
+          const w = nodesLay.clientWidth;
+          return (w * percent) / 100;
+        }
+        function yForRow(r) { return baseY + r*rowGap; }
+
+        // Dibuja línea con animación simple
+       function drawLink() { /* No hacemos nada, así no aparecen líneas */ }
+
+
+        // Crea un nodo visual
+        function makeNode({ text, xPct, row, klass = "", clickable = false, onClick }) {
+          ensureHeightFor(row);
+          const node = document.createElement("div");
+          node.className = `glass-node ${klass}`;
+          node.textContent = text;
+          const xpx = pctXToPx(xPct) - 80; // centrado (160px/2)
+          const ypx = yForRow(row) - 80;
+          node.style.left = `${xpx}px`;
+          node.style.top  = `${ypx}px`;
+          if (clickable) {
+            node.addEventListener("click", (e) => {
+              e.stopPropagation();
+              onClick && onClick();
+            });
+          } else {
+            node.classList.add("disabled");
+          }
+          nodesLay.appendChild(node);
+          (nodesByDepth[row] ||= []).push(node);
+          return { 
+  node, 
+  cx: xpx + node.offsetWidth / 2, 
+  cy: ypx + node.offsetHeight / 2,
+  rx: node.offsetWidth / 2,
+  ry: node.offsetHeight / 2
+};
+
+        }
+
+        // Limpia niveles > row (cuando se cambia de rama)
+        function clearBelow(row) {
+  for (let r = row + 1; r < nodesByDepth.length; r++) {
+    (nodesByDepth[r] || []).forEach(n => {
+      // Agrega clase de fade-out
+      n.classList.add('fade-out');
+      // Guarda todas las líneas que conectan a este nodo
+      const lines = [...svg.querySelectorAll("line")].filter(L => {
+        const y1 = +L.getAttribute("y1");
+        return y1 >= n.offsetTop;
+      });
+      // Fuerza reflujo
+      void n.offsetWidth;
+      // Espera animación antes de eliminar
+      setTimeout(() => {
+        if (n.parentNode) n.parentNode.removeChild(n);
+        lines.forEach(L => L.remove());
+      }, 300);
+    });
+    nodesByDepth[r] = [];
+  }
+}
+
+
+
+
+        // Pequeño "pan/zoom" hacia el nivel
+        function focusRow(row) {
+          const shift = Math.max(0, (row-1) * 80);
+          canvas.style.transform = `translateY(-${shift}px) scale(1.02)`;
+          setTimeout(() => { canvas.style.transform = `translateY(-${shift}px) scale(1)`; }, 320);
+        }
+
+        // Render recursivo
+        function renderNode(nodeData, row, parentPos) {
+          focusRow(row);
+          // Root o siguiente pregunta
+          const xPct = (row === 0) ? 50 : 50; // pregunta centrada siempre
+          const q = makeNode({ text: nodeData.question, xPct, row, klass: "question", clickable: false });
+          if (parentPos) { drawLink(parentPos.cx, parentPos.cy, q.cx, q.cy); }
+
+          // Mostrar opciones con delay para efecto de “aparecer”
+          setTimeout(() => {
+            const opts = nodeData.options || [];
+            const leftX  = 30, rightX = 70;
+            // Dos opciones: izquierda/derecha
+            const left = makeNode({
+              text: opts[0].text, xPct: leftX, row: row+1, klass: "option", clickable: true,
+              onClick: () => handleChoice(opts[0], row+1, q)
+            });
+            const right = makeNode({
+              text: opts[1].text, xPct: rightX, row: row+1, klass: "option", clickable: true,
+              onClick: () => handleChoice(opts[1], row+1, q)
+            });
+            drawLink(q.cx, q.cy, left.cx, left.cy);
+            drawLink(q.cx, q.cy, right.cx, right.cy);
+          }, 250);
+        }
+
+       function showResult(res) {
+  overlay.innerHTML = `
+    <div class="panel in ${res.ok ? "success" : "error"}">
+      <h2>${res.ok ? " ¡Felicitaciones!" : "Respuesta incorrecta"}</h2>
+      <p>${res.why}</p>
+      <div class="controls">
+        <button id="exitGame">Salir</button>
+        <button id="restartGame">Reintentar</button>
+      </div>
+    </div>
+  `;
+
+  // Botón de reintentar → reinicia el árbol
+  overlay.querySelector("#restartGame").addEventListener("click", (e) => {
+    e.stopPropagation();
+    startDecisionGame(activeKey);
+    menu.classList.remove("hidden");
+    document.body.classList.remove("modal-open");
+  });
+}
+
+
+        function handleChoice(choice, row, parentQ) {
+          // Cambiar de rama: borra niveles inferiores y líneas
+          clearBelow(row-1);
+          focusRow(row);
+          // Si hoja -> resultado
+          if (choice.result) {
+            showResult(choice.result, row);
+            return;
+          }
+          // Si hay siguiente pregunta -> render
+          if (choice.next) {
+            renderNode(choice.next, row, { cx: pctXToPx(50), cy: yForRow(row)-80 }); // desde centro de la fila previa
+          }
+        }
+
+        // Inicio: render raíz
+        renderNode(tree, 0, null);
+
+        // Controles
+        overlay.querySelector("#exitGame").addEventListener("click", (e) => { e.stopPropagation(); resetView(); });
+        overlay.querySelector("#restartGame").addEventListener("click", (e) => {
+          e.stopPropagation();
+          startDecisionGame(topicKey);
+        });
+      }
+
+      /* ====== Cerrar overlay si clic afuera ====== */
+      document.addEventListener('click', (e) => {
+        const clickedInsideOverlay = e.target.closest('.overlay');
+        const clickedHub = e.target.closest('.hub');
+        if (activeHub && !clickedInsideOverlay && !clickedHub) resetView();
+      });
+
+       function resetView() {
+  // Mostrar otra vez todos los hubs
+  hubs.forEach(h => {
+    h.classList.remove('hidden');
+  });
+
+  // Mostrar el panel fijo de la derecha
+  infoCard.classList.remove("hidden");
+  infoCard.style.opacity = 1; // por si lo dejaste en 0
+
+  // Mostrar el menú de nuevo
+  menu.classList.remove("hidden");
+
+  // Reset del zoom
+  scene.style.transform = "translate(0,0) scale(1)";
+
+  overlay.classList.remove('active');
+  document.body.classList.remove("modal-open");
+  activeHub = null;
+
+  // Pausar video si hay uno abierto
+const video = overlay.querySelector("video");
+if (video) {
+  video.pause();
+  video.currentTime = 0;
+}
+
+}
+
+
+
+
+
+
+    });
+  </script>
+</body>
+</html>

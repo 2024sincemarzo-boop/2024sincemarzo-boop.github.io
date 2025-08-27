@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Nodo - QR Malos</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fff; /* Fondo blanco */
+      color: #000;
+      overflow-x: hidden;
+    }
+
+    /* Fondo partículas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Contenedor principal */
+    .content {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* Título */
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    /* Caja de vidrio */
+    .glass-box {
+      background: rgba(0, 0, 0, 0.096);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 0px solid rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      max-width: 800px;
+      width: 90%;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .glass-box p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .glass-box ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .glass-box li {
+      margin: 8px 0;
+    }
+
+    /* Botón de volver */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo partículas -->
+  <div id="particles-js"></div>
+
+  <!-- Contenido -->
+  <div class="content">
+    <h1>Por qué no escanear códigos</h1>
+
+    <div class="glass-box">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt, 
+         nisl sit amet ultricies elementum, nulla sapien gravida erat, at malesuada 
+         justo nunc nec felis.</p>
+      
+      <p>Razones principales:</p>
+      <ul>
+        <li>Muchos códigos QR pueden ocultar enlaces maliciosos.</li>
+        <li>Es fácil redirigir a sitios falsos.</li>
+        <li>Pueden instalar software dañino en tu dispositivo.</li>
+      </ul>
+
+      <p>Siempre revisa la fuente antes de escanear un QR desconocido.</p>
+
+      <a href="index.html" class="btn">Volver al mapa</a>
+    </div>
+  </div>
+
+  <!-- Script partículas -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#000000" }, /* Partículas negras */
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.6 },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 250,
+          "color": "#000000", /* Líneas negras */
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": { "events": { "onhover": { "enable": false } } },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>

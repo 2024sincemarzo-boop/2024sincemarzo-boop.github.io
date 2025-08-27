@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Nosotros</title>
+  <style>
+    /* ===== Base + transición ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.8s;
+      margin-left: 50px;
+    }
+    body.fade-in { opacity: 1; }
+
+    /* ===== Partículas ===== */
+    #particles-js {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    /* ===== MENÚ ===== */
+    .menu {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 20px 40px;
+      z-index: 1000;
+      backdrop-filter: blur(15px) saturate(150%);
+      -webkit-backdrop-filter: blur(15px) saturate(150%);
+      border: none;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+    .menu ul {
+      display: flex;
+      gap: 90px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .menu a {
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      transition: 0.3s ease;
+    }
+    .menu a:hover {
+      text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+    }
+
+    /* ===== Layout ===== */
+    .about-container {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 520px 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 140px 80px 80px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* ===== Círculos ===== */
+    .circles {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 40px 0;
+      transition: opacity 0.5s ease, 
+    }
+
+    .circles.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+    .circle {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.8s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border: none;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+    .circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* ✅ llena el círculo */
+  object-position: center; /* ✅ centra bien el recorte */
+  border-radius: 50%;  /* ✅ para que la imagen también sea circular */
+  display: block;      /* evita espacios raros */
+}
+
+    .circle:hover {
+      transform: scale(1.08);
+      box-shadow:
+        inset 0 8px 12px rgba(255, 255, 255, 0.733),
+        0 10px 20px rgb(255, 255, 255),
+        0 0 20px rgba(255, 255, 255, 0.205);
+    }
+
+    /* ===== Caja de texto ===== */
+    .about-box {
+      max-width: 620px;
+      padding-top: 10px;
+      padding: 60px;
+      border-radius: 30px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(15px) saturate(150%);
+      -webkit-backdrop-filter: blur(15px) saturate(150%);
+      border: none;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+      font-size: 1.1rem;
+      p
+    }
+
+
+    .about-box p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6; /* Espaciado entre líneas */
+  color: #ffffff;
+  text-align: justify; /* Justificar texto */
+  max-width: 800px;
+  margin: 0 auto; /* Centrar en la página */
+}
+
+
+
+.about-box h1 {
+  font-family: 'Poppins', sans-serif; /* Fuente moderna */
+  font-size: 3rem; /* Tamaño grande */
+  font-weight: 700; /* Más grueso */
+  color: #ffffff; /* Un color llamativo */
+  text-align: center; /* Centrado */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  text-transform: uppercase; /* Mayúsculas */
+  margin-top: 10px;
+  padding-top: 10px;
+  position: relative;
+}
+
+/* Línea decorativa debajo del título */
+.about-box h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: #ffffff; 
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+    /* ===== Panel ===== */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: transparent;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    .overlay.active { display: flex; }
+    .glass-panel {
+        width: min(920px, 92vw);
+        max-height: 78vh;
+        border-radius: 28px;
+        padding: 40px;  
+        padding-left: 60px;
+        padding-bottom: 60px;
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(15px) saturate(150%);
+        -webkit-backdrop-filter: blur(15px) saturate(150%);
+        border: none;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        transform: scale(.96);
+        opacity: 0;
+        transition: transform .25s ease, opacity .25s ease;
+      }
+    .overlay.active .glass-panel {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .panel-title {
+  display: flex;
+  align-items: center;   /* centra verticalmente avatar y textos */
+  gap: 12px;             /* espacio entre avatar y textos */
+}
+
+.panel-title img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* contenedor de textos */
+.panel-title div {
+  display: flex;
+  flex-direction: column; /* 👉 nombre arriba, rol abajo */
+  line-height: 1.2;
+}
+
+.panel-title h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#panel-role {
+  margin: 0;
+  font-size: 15px;
+  color: #ccc; /* grisito para diferenciar */
+}
+
+    .close-btn {
+      cursor: pointer;
+      font-size: 28px;
+      color: #fff;
+      background: rgba(255,255,255,0.16);
+      border-radius: 12px;
+      padding: 4px 10px;
+    }
+    .panel-body {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 22px;
+      padding-top: 18px;
+    }
+    .panel-photo img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+
+
+    .panel-text p {
+    font-size: 20px;   /* tamaño de letra */
+    line-height: 1.6;  /* altura de línea para más aire */
+    color: #ffffff;    /* color del texto */
+    margin-bottom: 18px; /* espacio entre párrafos */
+    padding: 20px;
+    padding-right: 40px;
+    font-weight: 400 !important;
+    border: none;
+  }
+
+
+    /* Ocultar fondo cuando panel activo */
+    
+  </style>
+</head>
+<body>
+  <!-- Partículas -->
+  <div id="particles-js"></div>
+
+  <!-- Menú -->
+  <div class="menu">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="mapa.html">Mapa</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenido -->
+  <main class="about-container" id="mainContent">
+    <div class="circles">
+      <button class="circle"
+        data-name="Laura Rozo "
+        data-role="Creación de la narrativa y construcción de personajes"
+        data-desc="Le apasiona diseñar experiencias centradas en las personas, combinando creatividad y funcionalidad en proyectos de UI/UX. Disfruta empatizar y comprender cómo piensan y sienten los usuarios para crear soluciones útiles y significativas. Además, le gusta dar vida a personajes y narrativas, convencida de que las historias son una poderosa forma de conexión auténtica."
+        data-img="images/1.jpeg">
+        <img src="images/1.jpeg" alt="Persona 1"/>
+      </button>
+      <button class="circle"
+        data-name="Catalina Ruiz "
+        data-role="Investigación y proceso de empatía con el usuario."
+        data-desc="Le apasiona crear narrativas y experiencias que conectan lo estético con lo narrativo, 
+        generando proyectos capaces de despertar emociones e interés en las personas. 
+        Se caracteriza por su versatilidad y creatividad, combinando ilustración, diseño, 
+        programación y cosplay para dar vida a propuestas únicas e innovadoras."
+        
+        data-img="images/2.jpeg">
+        <img src="images/2.jpeg" alt="Persona 2"/>
+      </button>
+      <button class="circle"
+        data-name="Camila Mendieta "
+        data-role="Edición de video y producción audiovisual."
+        data-desc="Le apasiona lo experimental: busca articular la tecnología y el arte de formas poco convencionales, explorando lo audiovisual, lo digital y lo análogo.
+
+Se enfoca en la creación y edición de contenido audiovisual, disfrutando todo el proceso: desde la conceptualización y la construcción de la narrativa visual hasta la estética, el montaje y los detalles que dan coherencia y personalidad al resultado"
+        data-img="images/3.jpeg">
+        <img src="images/3.jpeg" alt="Persona 3"/>
+      </button>
+      <button class="circle"
+        data-name="Laura Roldan"
+        data-role="Diseño y desarrollo de la página web."
+        data-desc="Le gusta crear experiencias interactivas e inmersivas. Le apasiona el diseño grafico y digital desde interfaces, botones y UI en general. sabe programar en distintos leguajes de programación. Le encanta explorar la interactividad en espacios tanto digitales como físicos.  Asimismo disfruta la edición de video y cómo el diseño puede transmitir conceptos a través de la imagen."
+        data-img="images/4.jpeg">
+        <img src="images/4.jpeg" alt="Persona 4"/>
+      </button>
+    </div>
+
+    <section class="about-box">
+      <h1>Enredados</h1>
+      <p>El proyecto Enredados fue creado con el propósito de diseñar una experiencia interactiva que permita al usuario aprender sobre los distintos métodos de estafas digitales actuales en Colombia. Su objetivo principal es informar y sensibilizar a las personas frente a estas problemáticas, utilizando la página web como medio para presentar la investigación realizada. Además, se buscó que la propuesta no solo fuera informativa, sino también interactiva y única en su diseño, ofreciendo una experiencia atractiva y educativa.</p>
+    </section>
+  </main>
+
+  <!-- Panel -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="glass-panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <img id="panel-avatar" src="" alt="Foto"/>
+          <div>
+            <h2 id="panel-name">Nombre</h2>
+            <div id="panel-role">Rol</div>
+          </div>
+        </div>
+        <button class="close-btn" id="closeBtn">&times;</button>
+      </div>
+      <div class="panel-body">
+        <div class="panel-photo">
+          <img id="panel-photo" src="" alt="Foto grande"/>
+        </div>
+        <div class="panel-text">
+          <p id="panel-desc">—</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('fade-in');
+    });
+
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 350, density: { enable: true, value_area: 900 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.55 },
+        size: { value: 2, random: true },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.28, width: 1 },
+        move: { enable: true, speed: 2.4 }
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const circles = document.querySelectorAll(".circle");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+
+  const panelName = document.getElementById("panel-name");
+  const panelRole = document.getElementById("panel-role");
+  const panelDesc = document.getElementById("panel-desc");
+  const panelAvatar = document.getElementById("panel-avatar");
+  const panelPhoto = document.getElementById("panel-photo");
+
+  const circlesContainer = document.querySelector(".circles");
+
+  // Abrir panel al hacer click en un círculo
+  circles.forEach(circle => {
+    circle.addEventListener("click", () => {
+      panelName.textContent = circle.dataset.name;
+      panelRole.textContent = circle.dataset.role;
+      panelDesc.textContent = circle.dataset.desc;
+      panelAvatar.src = circle.dataset.img;
+      panelPhoto.src = circle.dataset.img;
+
+      overlay.classList.add("active");
+      circlesContainer.classList.add("hidden"); // fade out círculos
+    });
+  });
+
+  // Función cerrar panel
+  function closePanel() {
+    overlay.classList.remove("active");
+    circlesContainer.classList.remove("hidden"); // fade in círculos
+  }
+
+  // Cerrar con botón
+  closeBtn.addEventListener("click", closePanel);
+
+  // Cerrar al clickear fuera del panel
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closePanel();
+  });
+
+  // Cerrar con tecla ESC
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("active")) {
+      closePanel();
+    }
+  });
+});
+  </script>
+</body>
+</html>
