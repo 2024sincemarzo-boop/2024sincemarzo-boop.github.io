@@ -15,7 +15,7 @@
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="mapa.html">Mapa</a></li>
-    <li><a href="about.html">About Us</a></li>
+    <li><a href="about.html">Nosotros</a></li>
   </ul>
 </nav>
 
@@ -31,13 +31,15 @@
   </div>
 
   <div class="info-card card-base">
-    <h2>Explora el Mapa</h2>
+    <h1>Explora el Mapa</h1>
+
     <p id="default-info">
       Aquí puedes interactuar con la red de nodos.<br><br>
-      ⚪ Haz clic en cada nodo blanco para descubrir información.<br>
-      🖱️ Usa la rueda del mouse para desplazarte y explorar más nodos.<br>
-      🖱️ Cuando estés dentro de un panel, toca el fondo para salir y continuar explorando. <br>
-      📡  Nuestro diseño muestra cómo todo está interconectado: cada nodo representa conexiones dentro de la red, reflejando cómo nosotros y el internet formamos una red viva y en constante movimiento.
+      ⚪ Haz clic en cada nodo blanco para descubrir información.<br><br>
+      🖱️ Usa la rueda del mouse para desplazarte y explorar más nodos.<br><br>
+      🖱️ Cuando estés dentro de un panel, toca la red para salir y continuar explorando. <br><br>
+      📡 Nuestro diseño muestra cómo todo está interconectado.<br><br>
+         Cada nodo representa conexiones dentro de la red, reflejando cómo nosotros y el internet formamos una red viva y en constante movimiento.
     </p>
   </div>
 
@@ -93,15 +95,14 @@
       /* ====== Contenido de paneles por hub ====== */
       const info = {
 
-        hub1: [
+        hub1: [  /*  Phising  */
 
         /*  Panel 1  */
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1iJbOY7F9WRsc6Rj6qcC0fN4QOCW63t69/preview"
+            width="100%" height="315" allow="autoplay">
+          </iframe>
           </div>
           <div class="panel-right">
             <h1>Phishing</h1>
@@ -136,10 +137,10 @@
                 
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1zYS2sr9N1BQuXKi4LZ4Tx2PAWPKhCFPa/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
           </div>
           <div class="panel-right">
             <h2>¿Qué hacer en caso de ser víctima?</h2>
@@ -156,14 +157,15 @@
         
 
         ],
-        hub2: [
+        hub2: [  /*  Smishing  */
           /*  Panel 1  */
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1rb2vkJc1jUNRlOffr4-vHBqIw9GvftBh/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
+
           </div>
           <div class="panel-right">
             <h1>Smishing</h1>
@@ -192,10 +194,11 @@
                 
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1_QXMGS_SmJ5fGtFqk_O7bgQD1Xfk1vJV/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
+
           </div>
          
           <div class="panel-right">
@@ -216,14 +219,14 @@
           
 
         ],
-        hub3: [
+        hub3: [ /*  Vishing  */
           /*  Panel 1  */
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1Zz2TYWkM2Ykb3_GI3WCpQYbfhcvM9bHn/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
           </div>
           <div class="panel-right">
             <h1>Vishing</h1>
@@ -247,10 +250,10 @@
                 
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" controls>
-              <source src="videos/qrVideo.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1mqLezU_XdHnrtE2IVFGC0rCVlJ1KZOwg/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
           </div>
           <div class="panel-right">
         
@@ -269,19 +272,47 @@
         </div>`,
 
 
+        /*  Panel 3  */
+
+
+        `<div id="panel3" class="panel-layout">
+          <div class="panel-left">
+            <iframe src="https://drive.google.com/file/d/1OJjaYNBzmmWofWEEweMwK-RWvMdKrwlp/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
+          </div>
+
+          <div class="panel-right"></div>
+        </div>`,
+
+
+        /*  Panel 4  */
+
+        `<div id="panel4" class="panel-layout">
+        <div class="panel-left">
+          <iframe src="https://drive.google.com/file/d/1NDobZbGodn2qIkZRjPdRu3ETnMn0bdA0/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
+        </div>
+
+        <div class="panel-right"></div>
+      </div>`,
+              
 
         ],
 
 
 
-        hub4: [
+        hub4: [ /*  Paginas Web  */
           /*  Panel 1  */
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
+            <<iframe src="https://drive.google.com/file/d/1ipGf8FCGYzFuNDE_lUdOXodRS-GvGUgP/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
           </div>
           <div class="panel-right">
             <h1>Clonación de páginas web</h1>
@@ -312,10 +343,10 @@
         /*  Panel 2  */
         `<div class="panel-layout">
           <div class="panel-left">
-            <video width="100%" controls>
-              <source src="videos/video1.mp4" type="video/mp4">>
-              Tu navegador no soporta el video.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1FFcpbULXc8PTxDvM8PWIO4mS8IMmltpr/preview"
+        width="100%" height="315" allow="autoplay">
+</iframe>
+
           </div>
           <div class="panel-right">
 
@@ -334,65 +365,35 @@
 
 
 
-        /*  Panel 3  */
-        `<div class="panel-layout">
-          <div class="panel-left">
-            <video width="100%" >
-              <source src="videos/video1.mp4" type="video/mp4">
-              Tu navegador no soporta el video.
-            </video>
-          </div>
-          <div class="panel-right">
-
-            <h2>¿Fuiste Victima?</h2>
-            <ul>
-              <li>Si fuiste víctima, bloquea tus tarjetas, cambia contraseñas y guarda evidencias (URLs, recibos, capturas).</li>
-              <li>Denuncia la suplantación de sitios web ante la Policía como delito informático.</li>
-              <li>Reporta el fraude a tu banco de inmediato si hubo uso de tarjetas o datos financieros.</li>
-            </ul>
-            
-            
-          </div>
-        </div>`,
-
-
-            
-
-
         ],
 
         hub5: [
           /*  Panel 1  */
         `<div class="panel-layout">
-         
-
-
           <div class="panel-right">
             <h1>Datos Impactantes</h1>
            
             <ul>
-
-
               <li>
-                <h1>Más del 90%</h1>
+                <h2>Más del 90%</h2>
                 <p>De los encuestados a recibido al menos un intento de estafa digital</p>
               </li>
 
 
               <li>
-                <h1>Más del 35%</h1>
+                <h2>Más del 35%</h2>
                 <p>De los encuestados han sido victimas estafas digitales</p>
               </li>
 
 
               <li>
-                <h1>Fraudes Más comunes</h1>
-                <p>Mensajes de Texto,llamadas falsas y mensaje vía WhatsApp</p>
+                <h2>Fraudes más comunes</h2>
+                <p>Mensajes de Texto, llamadas falsas y mensaje vía WhatsApp</p>
               </li>
 
               <li>
-                <h1>Más del 90%</h1>
-                <p>Piensa que no hay suficiente información ni educacion del</p>
+                <h2>Más del 90%</h2>
+                <p>Piensa que no hay suficiente información ni educación de las estafas digitales en Colombia</p>
               </li>
 
               
@@ -418,23 +419,23 @@
             <ul>
 
               <li>
-                <h1>7726  </h1>
+                <h2>7726 </h2>
                 <p>¿Te llega un mensaje fraudulento? Reenvíalo al 7726. Así ayudas a tu operador a detectarlo y bloquearlo.</p>
               </li>
 
               <li>
-                <h1>Registro de Números Excluidos (RNE)</h1>
-                <p>nscribe gratis tu número en el RNE para dejar de recibir llamadas, mensajes de texto, correos o chats publicitarios no deseados.</p>
+                <h2>Registro de Números Excluidos (RNE)</h2>
+                <p>Gracias a la ley No Joda Más, puedes inscribir gratis tu número en el RNE para dejar de recibir llamadas, mensajes de texto, correos o chats publicitarios no deseados.</p>
               </li>
 
               <li>
-                <h1>Ley de Habeas Data</h1>
+                <h2>Ley de Habeas Data</h2>
                 <p>Cualquier persona puede pedir a una empresa que corrija, actualice o elimine sus datos personales de sus bases.</p>
               </li>
 
 
               <li>
-                <h1>Bloqueo gratuito</h1>
+                <h2>Bloqueo gratuito</h2>
                 <p>Si te roban el teléfono, puedes reportar el IMEI a tu operador y quedará bloqueado en todas las redes del país</p>
               </li>
 
@@ -555,22 +556,7 @@
             ]
         },
 
-        hub5: { // Más cosas
-          question: "LOCA",
-          options: [
-            { text: "Lo conecto para revisar", result: { ok: false, why: "Riesgo de BadUSB. Podría ejecutar código malicioso." } },
-            {
-              text: "Lo entrego a TI",
-              next: {
-                question: "TI indica que puede estar comprometido. ¿Qué haces?",
-                options: [
-                  { text: "Lo uso igual", result: { ok: false, why: "Ignorar políticas de TI aumenta el riesgo." } },
-                  { text: "Lo descarto según protocolo", result: { ok: true, why: "Acción correcta según procedimiento." } }
-                ]
-              }
-            }
-          ]
-        }
+        
       };
 
       let activeHub = null, activeKey = null, currentIndex = 0;
@@ -623,7 +609,7 @@
 
 
 
-     function renderPanel() {
+    function renderPanel() {
   let controlsHTML = "";
 
   const lastIndex = info[activeKey].length - 1;
@@ -632,7 +618,7 @@
     controlsHTML += `<button id="prevBtn">Anterior</button>`;
   }
 
-  if (currentIndex < lastIndex ) {
+  if (currentIndex < lastIndex) {
     controlsHTML += `<button id="nextBtn">Siguiente</button>`;
   }
 
@@ -640,20 +626,17 @@
     controlsHTML += `<button id="startGameBtn">Poner a prueba</button>`;
   }
 
-  
-
   const totalBtns = (controlsHTML.match(/<\/button>/g) || []).length;
   const controlsClass = totalBtns === 1 ? "controls single" : "controls";
 
   overlay.innerHTML = `
-  <div class="panel ${activeKey === "hub6" ? "hub6-style" : ""}">
-    ${info[activeKey][currentIndex]}
-    <div class="${controlsClass}">
-      ${controlsHTML}
+    <div class="panel ${activeKey === "hub6" ? "hub6-style" : ""}">
+      ${info[activeKey][currentIndex]}
+      <div class="${controlsClass}">
+        ${controlsHTML}
+      </div>
     </div>
-  </div>
-`;
-
+  `;
 
   const panel = overlay.querySelector('.panel');
   requestAnimationFrame(() => panel.classList.add('in'));
@@ -690,17 +673,121 @@
     });
   }
 
-  overlay.querySelectorAll('button,a').forEach(el => 
+  overlay.querySelectorAll('button,a').forEach(el =>
     el.addEventListener('click', ev => ev.stopPropagation())
   );
 
-  /* 👉 aquí la magia: reproducir video automáticamente si existe */
+  /* 👉 reproducir video automáticamente si existe */
   const video = overlay.querySelector(".panel-left video");
   if (video) {
     video.currentTime = 0;
     video.play().catch(err => console.log("Autoplay bloqueado:", err));
   }
+
+  /* 👉 activar lógica especial */
+  if (activeKey === "hub3" && currentIndex === 2) {
+  activarPanel3();
 }
+
+if (activeKey === "hub3" && currentIndex === 3) {
+  activarPanel4();
+}
+
+}
+
+
+function activarPanel3() {
+  // Buscar dentro del overlay recién creado
+  const videoOld = overlay.querySelector("#video-izq-3");
+  const panelDerecha = overlay.querySelector("#panel3 .panel-right");
+
+  if (!videoOld || !panelDerecha) {
+    console.log("activarPanel3: no encontró elementos (panel no renderizado aún).");
+    return;
+  }
+
+  // Vaciar el panel derecho al inicio
+  panelDerecha.innerHTML = "";
+
+  // Clonar el <video> para eliminar listeners previos (evita doble firing)
+  const video = videoOld.cloneNode(true);
+  video.id = videoOld.id; // mantener mismo id
+  videoOld.parentNode.replaceChild(video, videoOld);
+
+  // Forzar primer video (asegúrate que ruta exista)
+  const srcEl = video.querySelector("source");
+  if (srcEl) srcEl.src = "https://drive.google.com/file/d/1OJjaYNBzmmWofWEEweMwK-RWvMdKrwlp/preview";
+  else video.src = "https://drive.google.com/file/d/1OJjaYNBzmmWofWEEweMwK-RWvMdKrwlp/preview";
+
+  video.load();
+  video.play().catch(err => console.log("play error:", err));
+
+  // Al terminar, cargar segundo video y poner texto en la derecha (se ejecuta una sola vez)
+  video.addEventListener("ended", () => {
+    if (srcEl) srcEl.src = "https://drive.google.com/file/d/1m2i5FlMtGcQFC9yz7mRdUVkSswraR16j/preview";
+    else video.src = "https://drive.google.com/file/d/1m2i5FlMtGcQFC9yz7mRdUVkSswraR16j/preview";
+    video.load();
+    video.play().catch(err => console.log("play error:", err));
+
+    panelDerecha.innerHTML = `
+      <h2>Señales de Alerta</h2>
+      <ul>
+        <li>El banco nunca llama para avisar de esto, simplemente bloquea la tarjeta de inmediato.</li>
+        <li>Piden los últimos 4 dígitos de la tarjeta y cédula, el banco NO llama a solicitar esos datos</li>
+        <li>El SMS es personal, nunca se comparte</li>
+        <li>Amenazan con suspender la cuenta si no obedeces rápido, esa presión es típica de un fraude.</li>
+      </ul>
+    `;
+  }, { once: true });
+}
+
+
+function activarPanel4() {
+  // Buscar dentro del overlay recién creado
+  const videoOld = overlay.querySelector("#video-izq-4");
+  const panelDerecha = overlay.querySelector("#panel4 .panel-right");
+
+  if (!videoOld || !panelDerecha) {
+    console.log("activarPanel4: no encontró elementos (panel no renderizado aún).");
+    return;
+  }
+
+  // Vaciar el panel derecho al inicio
+  panelDerecha.innerHTML = "";
+
+  // Clonar el <video> para eliminar listeners previos (evita doble firing)
+  const video = videoOld.cloneNode(true);
+  video.id = videoOld.id; // mantener mismo id
+  videoOld.parentNode.replaceChild(video, videoOld);
+
+  // Forzar primer video (asegúrate que ruta exista)
+  const srcEl = video.querySelector("source");
+  if (srcEl) srcEl.src = "https://drive.google.com/file/d/1NDobZbGodn2qIkZRjPdRu3ETnMn0bdA0/preview";
+  else video.src = "https://drive.google.com/file/d/1NDobZbGodn2qIkZRjPdRu3ETnMn0bdA0/preview";
+
+  video.load();
+  video.play().catch(err => console.log("play error:", err));
+
+  // Al terminar, cargar segundo video y poner texto en la derecha (se ejecuta una sola vez)
+  video.addEventListener("ended", () => {
+    if (srcEl) srcEl.src = "https://drive.google.com/file/d/1hqzb-UpCACsbQ3ZRgVey5SuMfA6J-7bP/preview";
+    else video.src = "https://drive.google.com/file/d/1hqzb-UpCACsbQ3ZRgVey5SuMfA6J-7bP/preview";
+    video.load();
+    video.play().catch(err => console.log("play error:", err));
+
+    panelDerecha.innerHTML = `
+      <h2>Señales de Alerta</h2>
+      <ul>
+        <li>Solo informan sobre un crédito preaprobado, NO piden claves, códigos ni datos personales.</li>
+        <li>Te invitan a confirmar por canales oficiales, app del banco o una sucursal física.</li>
+        <li>No usan amenazas ni presión, nadie habla de bloqueos inmediatos ni suspensiones.</li>
+        <li>Respetan tu seguridad, la decisión de aceptar o no el crédito es tuya</li>
+      </ul>
+    `;
+  }, { once: true });
+}
+
+
 
 
     /* ====== Auto-reproducir video al abrir panel ====== */
@@ -724,7 +811,7 @@ document.addEventListener("transitionend", (e) => {
 
         overlay.innerHTML = `
     <div class="panel in">
-      <h2>Decisión interactiva</h2>
+      <h2>¡Ponte a Prueba!</h2>
       <div class="game-wrap card-base">
         <div class="game-canvas">
           <svg class="tree-svg" xmlns="http://www.w3.org/2000/svg"></svg>
@@ -850,7 +937,7 @@ document.addEventListener("transitionend", (e) => {
           }, 250);
         }
 
-       function showResult(res) {
+ function showResult(res) {
   overlay.innerHTML = `
     <div class="panel in ${res.ok ? "success" : "error"}">
       <h2>${res.ok ? " ¡Felicitaciones!" : "Respuesta incorrecta"}</h2>
@@ -862,6 +949,12 @@ document.addEventListener("transitionend", (e) => {
     </div>
   `;
 
+  // Botón salir → vuelve al mapa
+  overlay.querySelector("#exitGame").addEventListener("click", (e) => {
+    e.stopPropagation();
+    resetView();
+  });
+
   // Botón de reintentar → reinicia el árbol
   overlay.querySelector("#restartGame").addEventListener("click", (e) => {
     e.stopPropagation();
@@ -870,6 +963,7 @@ document.addEventListener("transitionend", (e) => {
     document.body.classList.remove("modal-open");
   });
 }
+
 
 
         function handleChoice(choice, row, parentQ) {
