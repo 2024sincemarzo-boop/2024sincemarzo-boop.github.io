@@ -8,7 +8,7 @@
     /* ===== Base + transición ===== */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: Calibri;
       background: #000;
       color: #fff;
       opacity: 0;
@@ -80,7 +80,7 @@
       flex-wrap: wrap;
       width: 100%;
       padding: 40px 0;
-      transition: opacity 0.5s ease, 
+      transition: opacity 0.5s ease
     }
 
     .circles.hidden {
@@ -131,13 +131,13 @@
       border: none;
       box-shadow: 0 4px 30px rgba(0,0,0,0.5);
       font-size: 1.1rem;
-      p
+      
     }
 
 
     .about-box p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.1rem;
+  font-family: Calibri;
+  font-size: 20px;
   line-height: 1.6; /* Espaciado entre líneas */
   color: #ffffff;
   text-align: justify; /* Justificar texto */
@@ -154,7 +154,7 @@
   color: #ffffff; /* Un color llamativo */
   text-align: center; /* Centrado */
   letter-spacing: 2px; /* Espaciado entre letras */
-  text-transform: uppercase; /* Mayúsculas */
+  
   margin-top: 10px;
   padding-top: 10px;
   position: relative;
@@ -182,26 +182,34 @@
       z-index: 3000;
     }
     .overlay.active { display: flex; }
-    .glass-panel {
-        width: min(920px, 92vw);
-        max-height: 78vh;
-        border-radius: 28px;
-        padding: 40px;  
-        padding-left: 60px;
-        padding-bottom: 60px;
-        background: rgba(255, 255, 255, 0.10);
-        backdrop-filter: blur(15px) saturate(150%);
-        -webkit-backdrop-filter: blur(15px) saturate(150%);
-        border: none;
-        box-shadow: 0 4px 30px rgba(0,0,0,0.5);
-        transform: scale(.96);
-        opacity: 0;
-        transition: transform .25s ease, opacity .25s ease;
-      }
-    .overlay.active .glass-panel {
-      transform: scale(1);
-      opacity: 1;
-    }
+
+
+   .glass-panel {
+    width: min(920px, 92vw);
+    max-height: 78vh;
+    border-radius: 28px;
+    padding: 40px 60px 60px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    border: none;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+
+    transform: scale(0.96);
+    opacity: 0;
+    transition: transform .25s ease, opacity .25s ease;
+
+    display: none; /* ⚡ oculto al inicio */
+}
+
+.overlay.active .glass-panel {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+
+    
     .panel-header {
       display: flex;
       justify-content: space-between;
@@ -263,15 +271,27 @@
 
 
     .panel-text p {
+      font-family: Calibri;
     font-size: 20px;   /* tamaño de letra */
     line-height: 1.6;  /* altura de línea para más aire */
     color: #ffffff;    /* color del texto */
     margin-bottom: 18px; /* espacio entre párrafos */
     padding: 20px;
     padding-right: 40px;
-    font-weight: 400 !important;
+    font-weight: 100 !important;
     border: none;
   }
+
+
+  .about-box {
+  transition: opacity 0.5s ease;
+}
+
+.about-box.hidden {
+  opacity: 0;
+  pointer-events: none; /* evita que se pueda hacer clic mientras está oculta */
+}
+
 
 
     /* Ocultar fondo cuando panel activo */
@@ -323,8 +343,8 @@ Se enfoca en la creación y edición de contenido audiovisual, disfrutando todo 
       </button>
       <button class="circle"
         data-name="Laura Roldan"
-        data-role="Diseño y desarrollo de la página web."
-        data-desc="Le gusta crear experiencias interactivas e inmersivas. Le apasiona el diseño grafico y digital desde interfaces, botones y UI en general. sabe programar en distintos leguajes de programación. Le encanta explorar la interactividad en espacios tanto digitales como físicos.  Asimismo disfruta la edición de video y cómo el diseño puede transmitir conceptos a través de la imagen."
+        data-role="Diseño y desarrollo web."
+        data-desc="Le gusta crear experiencias interactivas e inmersivas. Le apasiona el diseño gráfico y digital desde interfaces, botones y UI en general. Sabe programar en distintos leguajes de programación. Le encanta explorar la interactividad en espacios tanto digitales como físicos. Asímismo disfruta la edición de video y cómo el diseño puede transmitir conceptos a través de la imagen."
         data-img="images/4.jpeg">
         <img src="images/4.jpeg" alt="Persona 4"/>
       </button>
@@ -363,70 +383,81 @@ Se enfoca en la creación y edición de contenido audiovisual, disfrutando todo 
   <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.body.classList.add('fade-in');
-    });
-
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 350, density: { enable: true, value_area: 900 } },
-        color: { value: "#ffffff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.55 },
-        size: { value: 2, random: true },
-        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.28, width: 1 },
-        move: { enable: true, speed: 2.4 }
-      }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-  const circles = document.querySelectorAll(".circle");
-  const overlay = document.getElementById("overlay");
-  const closeBtn = document.getElementById("closeBtn");
-
-  const panelName = document.getElementById("panel-name");
-  const panelRole = document.getElementById("panel-role");
-  const panelDesc = document.getElementById("panel-desc");
-  const panelAvatar = document.getElementById("panel-avatar");
-  const panelPhoto = document.getElementById("panel-photo");
-
-  const circlesContainer = document.querySelector(".circles");
-
-  // Abrir panel al hacer click en un círculo
-  circles.forEach(circle => {
-    circle.addEventListener("click", () => {
-      panelName.textContent = circle.dataset.name;
-      panelRole.textContent = circle.dataset.role;
-      panelDesc.textContent = circle.dataset.desc;
-      panelAvatar.src = circle.dataset.img;
-      panelPhoto.src = circle.dataset.img;
-
-      overlay.classList.add("active");
-      circlesContainer.classList.add("hidden"); // fade out círculos
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('fade-in');
   });
 
-  // Función cerrar panel
-  function closePanel() {
-    overlay.classList.remove("active");
-    circlesContainer.classList.remove("hidden"); // fade in círculos
-  }
-
-  // Cerrar con botón
-  closeBtn.addEventListener("click", closePanel);
-
-  // Cerrar al clickear fuera del panel
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) closePanel();
-  });
-
-  // Cerrar con tecla ESC
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && overlay.classList.contains("active")) {
-      closePanel();
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 350, density: { enable: true, value_area: 900 } },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.55 },
+      size: { value: 2, random: true },
+      line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.28, width: 1 },
+      move: { enable: true, speed: 2.4 }
     }
   });
-});
-  </script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const circles = document.querySelectorAll(".circle");
+    const overlay = document.getElementById("overlay");
+    const closeBtn = document.getElementById("closeBtn");
+
+    const panelName = document.getElementById("panel-name");
+    const panelRole = document.getElementById("panel-role");
+    const panelDesc = document.getElementById("panel-desc");
+    const panelAvatar = document.getElementById("panel-avatar");
+    const panelPhoto = document.getElementById("panel-photo");
+
+    const circlesContainer = document.querySelector(".circles");
+    const aboutBox = document.querySelector(".about-box");
+
+    // Abrir panel
+    circles.forEach(circle => {
+      circle.addEventListener("click", () => {
+        panelName.textContent = circle.dataset.name;
+        panelRole.textContent = circle.dataset.role;
+        panelDesc.textContent = circle.dataset.desc;
+        panelAvatar.src = circle.dataset.img;
+        panelPhoto.src = circle.dataset.img;
+
+        overlay.classList.add("active");
+        circlesContainer.classList.add("hidden"); // fade out círculos
+        aboutBox.classList.add("hidden");        // fade out caja de texto
+
+         // Forzar que el efecto de vidrio se renderice correctamente
+const panel = overlay.querySelector(".glass-panel");
+setTimeout(() => {
+    panel.style.display = "block";
+}, 10);
+      });
+    });
+
+    // Función cerrar panel
+    function closePanel() {
+      overlay.classList.remove("active");
+      circlesContainer.classList.remove("hidden"); // fade in círculos
+      aboutBox.classList.remove("hidden");        // fade in caja de texto
+    }
+
+    // Cerrar con botón
+    closeBtn.addEventListener("click", closePanel);
+
+    // Cerrar al clickear fuera del panel
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closePanel();
+    });
+
+    // Cerrar con tecla ESC
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && overlay.classList.contains("active")) {
+        closePanel();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
+
